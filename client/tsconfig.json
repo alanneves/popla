@@ -11,7 +11,9 @@
     "resolveJsonModule": true,
     "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],

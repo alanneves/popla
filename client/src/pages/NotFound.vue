@@ -9,16 +9,15 @@
       </section>
       <section class="divider" />
       <section class="maintenance-robot">
-        <img :src="MaintenanceRobotImage" alt="maintenance robot ">
+        <img :src="MaintenanceRobotImage" alt="maintenance robot" loading="lazy">
       </section>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import MaintenanceRobotImage from '@assets/images/maintenance_robot.svg';
-import NotFoundImage from '@assets/images/404.svg';
-import Button from '@components/Button.vue';
+import { Button } from '@/components';
+import { NotFoundImage, MaintenanceRobotImage } from '@assets/images';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
