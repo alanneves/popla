@@ -5,7 +5,7 @@
         <img :src="NotFoundImage" alt="maintenance robot">
         <h2>Page Not Found</h2>
         <p>Sorry, we can’t find what you are looking for.</p>
-        <Button class="button" text="Go Back" />
+        <Button class="button" text="Go Back" @click="returnToHomePage" />
       </section>
       <section class="divider" />
       <section class="maintenance-robot">
@@ -19,6 +19,13 @@
 import MaintenanceRobotImage from '@assets/images/maintenance_robot.svg';
 import NotFoundImage from '@assets/images/404.svg';
 import Button from '@components/Button.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const returnToHomePage = () => {
+  router.push({ path: '/' });
+};
 
 </script>
 
@@ -57,6 +64,7 @@ main {
 .not-found .button {
   margin-top: 25px;
 }
+
 @media screen and (min-width: 1280px) {
   .maintenance-robot img {
     max-width: 56rem;
