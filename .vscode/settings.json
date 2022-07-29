@@ -1,0 +1,9 @@
+{
+  "grammarly.selectors": [
+    {
+      "language": "mdx",
+      "scheme": "untitled",
+      "pattern": "Untitled-1"
+    }
+  ]
+}

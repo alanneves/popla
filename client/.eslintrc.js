@@ -18,6 +18,7 @@ module.exports = {
     'comma-dangle': ['error', 'only-multiline'],
     'semi': ['error', 'always'],
     'quotes': ['error', 'single'],
+    'vue/multi-word-component-names': 'off',
   },
   globals: {
     defineProps: 'readonly',

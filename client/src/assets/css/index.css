@@ -1,0 +1,29 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  line-height: 1.3em;
+}
+
+h1 {
+  font-size: 5.6rem;
+  font-weight: 700;
+  line-height: 1.1em;
+  color: #1a2935;
+}
+
+h2 {
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1.1em;
+  color: #1a2935;
+}
+
+p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: #1a2935;
+}
