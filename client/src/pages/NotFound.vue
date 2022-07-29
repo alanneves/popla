@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/components';
+import { Button } from '@components';
 import { NotFoundImage, MaintenanceRobotImage } from '@assets/images';
 import { useRouter } from 'vue-router';
 
