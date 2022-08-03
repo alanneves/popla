@@ -1,9 +1,10 @@
 <template>
   <div class="select-container">
     <label :class="isActive ? 'active' : 'not-active'">{{ label }}</label>
-    <div class="wrapper" tabindex="0" @focus="setIsActive(true)" @blur="setIsActive(false)">
+    <div class="wrapper" @click="setShowOptions()" tabindex="0" @focus="setIsActive(true)"
+      @blur="($e) => setIsActive(false, $e)">
       <div class="option">
-        Sim!!
+        {{ selectedOptionLabel }}
       </div>
       <div class="icon">
         <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
@@ -13,27 +14,60 @@
         </svg>
       </div>
     </div>
+    <div class="options" v-if="showOptions">
+      <div class="option" :class="{
+        'selected': props.value === option.value
+      }" @click="selectOption(option.value)" aria-disabled="false" v-for="option in options" :key="option.value"
+        tabindex="-1">
+        {{ option.label }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 
 const props = defineProps<{
   label: string
+  value?: string
   options: Array<{
     label: string
     value: string
   }>
 }>();
 
-const isActive = ref(false);
+const emit = defineEmits<{
+  (e: 'update:value', value: string): void
+}>();
 
-const setIsActive = (newValue: boolean) => {
-  console.log(newValue);
-  isActive.value = !!(newValue) || true;
+const isActive = ref(false);
+const showOptions = ref(false);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const setIsActive = (newValue: boolean, event?: any) => {
+  const selectedAnOption = event?.relatedTarget?.className === 'option';
+  isActive.value = !!(newValue || props.value || selectedAnOption);
+  console.log(props.value);
+
+  if (!selectedAnOption) {
+    showOptions.value = false;
+  }
 };
 
+const setShowOptions = () => {
+  showOptions.value = !showOptions.value;
+};
+
+const selectOption = (value: string) => {
+  emit('update:value', value);
+  setShowOptions();
+};
+
+const selectedOptionLabel = computed(() => props.options.find(option => option.value === props.value)?.label || '');
+
+setIsActive(false, props.value);
 </script>
 
 <style scoped>
@@ -129,5 +163,39 @@ div.wrapper .icon:hover {
 
 div.wrapper .icon svg {
   fill: currentcolor;
+}
+
+.options {
+  background-color: #fff;
+  z-index: 1;
+  width: 100%;
+  margin-top: 8px;
+  position: absolute;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 0px 1px, rgb(0 0 0 / 10%) 0px 4px 11px;
+  border-radius: 4px;
+  padding: 4px 0;
+  overflow-y: auto;
+  cursor: pointer;
+}
+
+.options .option {
+  background-color: transparent;
+  color: inherit;
+  padding: 8px 12px;
+}
+
+.options .option {
+  background-color: transparent;
+  color: inherit;
+  padding: 8px 12px;
+}
+
+.options .option:not(.selected):hover {
+  background-color: rgb(222, 235, 255);
+}
+
+.options .option.selected {
+  background-color: rgb(38, 132, 255);
+  color: rgb(255, 255, 255);
 }
 </style>
