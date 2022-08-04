@@ -5,7 +5,7 @@
         <img :src="NotFoundImage" alt="maintenance robot">
         <h2>Page Not Found</h2>
         <p>Sorry, we can’t find what you are looking for.</p>
-        <Button class="button" text="Go Back" @click="returnToHomePage" />
+        <Button class="button" label="Go Back" @click="returnToHomePage" />
       </section>
       <section class="divider" />
       <section class="maintenance-robot">

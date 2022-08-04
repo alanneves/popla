@@ -26,8 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from '@vue/reactivity';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps<{
   label: string
@@ -149,6 +148,9 @@ div.wrapper .option {
   flex: 1 1 0%;
   display: flex;
   align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 div.wrapper .icon {
@@ -182,6 +184,7 @@ div.wrapper .icon svg {
   background-color: transparent;
   color: inherit;
   padding: 8px 12px;
+  text-align: initial;
 }
 
 .options .option {

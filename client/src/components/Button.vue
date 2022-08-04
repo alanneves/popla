@@ -1,12 +1,12 @@
 <template>
   <div class="button-container">
-    {{ text }}
+    {{ label }}
   </div>
 </template>
 
 <script setup lang="ts">
 defineProps({
-  text: {
+  label: {
     type: String,
     required: true,
   }
