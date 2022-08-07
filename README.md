@@ -1,4 +1,4 @@
-<h1 align="center"><b>Popla</b></h1>
+<h1 align="center"><b>🎮 Popla</b></h1>
 <p align="center">
   A simplest version of the <a href="https://planningpokeronline.com/" target="_blank">Planning Poker Online</a> application
 </p>
