@@ -5,8 +5,8 @@
 
 > The back-end has not yet been implemented at this time.
 
-<p align="center" style="margin-top: -150px; margin-left: 70px; margin-bottom: -200px;">
-  <img src="https://raw.githubusercontent.com/alanneves/popla/master/client/src/assets/images/logo.png" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/alanneves/popla/master/docs/logo.png" />
   <br />
 </p>
 
