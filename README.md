@@ -22,7 +22,7 @@
 
 ```bash
 git clone https://github.com/alanneves/popla
-cd lotion
+cd popla
 npm i
 ```
 
