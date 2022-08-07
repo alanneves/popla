@@ -14,7 +14,7 @@
 
 - [x] 404 page
 - [x] Create game page
-- [] Game page
+- [ ] Game page
 
 ## Getting Started
 
