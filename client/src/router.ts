@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const NewGamePage = () => import('@/pages/NewGame.vue');
 const NotFoundPage = () => import('@/pages/NotFound.vue');
+const GamePage = () => import ('@/pages/Game.vue');
 
 const routes = [
   {
@@ -14,6 +15,14 @@ const routes = [
     component: NewGamePage,
     meta: {
       title: 'Planning Poker | Create Game'
+    }
+  },
+  {
+    path: '/game/:id',
+    name: 'game',
+    component: GamePage,
+    meta: {
+      title: 'Planning Poker | Game'
     }
   },
   {
