@@ -15,7 +15,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { TextInput, Select, Button } from '@components';
+import { TextInput, Select, Button } from '@/components/shared';
 import { ref } from 'vue';
 import { LogoImage } from '@assets/images';
 

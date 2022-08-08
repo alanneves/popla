@@ -25,6 +25,13 @@ h2 {
   color: #1a2935;
 }
 
+h4 {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2em;
+  color: 1a2935;
+}
+
 p {
   font-size: 1.8rem;
   font-weight: 400;
