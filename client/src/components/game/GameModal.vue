@@ -1,18 +1,29 @@
 <template>
   <Modal class="game-modal">
     <h4>Write your name :)</h4>
-    <TextInput label="Your name" v-model:value="state.name" />
-    <Button label="Continue to game" />
+    <TextInput id="name-input" label="Your name" v-model:value="state.name" />
+    <Button label="Continue to game" @click="submit" />
   </Modal>
 </template>
 
 <script setup lang="ts">
 import { Modal, TextInput, Button } from '@components/shared';
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
-const state = ref({
+const state = reactive({
   name: '',
 });
+
+const emit = defineEmits<{
+  (event: 'close'): void
+}>();
+
+const submit = () => {
+  if (!state.name)
+    return;
+
+  emit('close');
+};
 
 </script>
 
