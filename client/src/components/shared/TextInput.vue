@@ -45,6 +45,7 @@ label {
   transition: all .2s;
   position: absolute;
   font-weight: 500;
+  z-index: 1;
 }
 
 label.active {
@@ -87,6 +88,7 @@ input {
   padding: 0 1.6rem;
   outline: none;
   z-index: 1;
+  position: relative;
 }
 
 input:hover {
