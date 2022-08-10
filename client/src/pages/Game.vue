@@ -1,9 +1,15 @@
 <template>
-  <GameModal v-if="state.show.modal" @close="state.show.modal = false" />
+  <div class="game-container">
+    <GameHeader class="header" />
+    <GameModal v-if="false" @close="state.show.modal = false" />
+    <GameTable class="table" />
+    <GameDeck class="deck" />
+  </div>
 </template>
 
 <script setup lang="ts">
-import GameModal from '@components/game/GameModal.vue';
+import { GameHeader, GameModal, GameDeck, GameTable } from '@components/game';
+
 import { reactive } from 'vue';
 
 const state = reactive({
@@ -15,4 +21,22 @@ const state = reactive({
 </script>
 
 <style scoped>
+.game-container {
+  background-color: #f9f9f9;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 2%;
+}
+
+.game-container .header {
+  height: 10%;
+}
+
+.game-container .table {
+  height: 75%;
+}
+
+.game-container .deck {
+  height: 15%;
+}
 </style>
