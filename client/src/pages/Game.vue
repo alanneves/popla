@@ -33,10 +33,10 @@ const state = reactive({
 }
 
 .game-container .table {
-  height: 75%;
+  height: 70%;
 }
 
 .game-container .deck {
-  height: 15%;
+  height: 20%;
 }
 </style>
