@@ -1,0 +1,41 @@
+service: popla
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs16.x
+  architecture: arm64
+  memorySize: 1024
+  logRetentionInDays: 7
+
+functions:
+  healthCheck:
+    handler: src/functions/healthCheck.lambda
+    events:
+      - httpApi:
+          path: /v1/health/check
+          method: GET
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    stages:
+      - dev
+    seed:
+      domain:
+        sources:
+          - table: Game
+            sources: [./database/data/Game.json]
+
+resources:
+  - ${file(database/tables.yml)}

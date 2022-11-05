@@ -12,5 +12,14 @@
     "tailwindcss",
     "vueuse",
     "vuex"
+  ],
+  "serverlessConsole.services": [
+    {
+      "type": "dynamodb",
+      "title": "Game",
+      "tableName": "Game",
+      "region": "local",
+      "endpoint": "http://localhost:8000"
+    }
   ]
 }

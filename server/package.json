@@ -1,0 +1,15 @@
+{
+  "name": "popla",
+  "version": "1.0.0",
+  "description": "Popla backend",
+  "scripts": {
+    "start": "npx serverless offline start --reloadHandler"
+  },
+  "author": "alanrenoneves@gmail.com",
+  "devDependencies": {
+    "aws-sdk": "^2.1247.0",
+    "serverless": "^3.24.0",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^11.2.3"
+  }
+}
