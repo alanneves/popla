@@ -2,8 +2,12 @@
   "name": "popla",
   "version": "1.0.0",
   "description": "Popla backend",
+  "type": "module",
   "scripts": {
     "start": "npx serverless offline start --reloadHandler"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "author": "alanrenoneves@gmail.com",
   "devDependencies": {

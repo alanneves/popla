@@ -18,6 +18,20 @@ functions:
           path: /v1/health/check
           method: GET
 
+  getUser:
+    handler: src/functions/user/get.lambda
+    events:
+      - httpApi:
+          path: /v1/users/{id}
+          method: GET
+
+  createUser:
+    handler: src/functions/user/create.lambda
+    events:
+      - httpApi:
+          path: /v1/users
+          method: POST
+
 plugins:
   - serverless-dynamodb-local
   - serverless-offline
@@ -34,8 +48,8 @@ custom:
     seed:
       domain:
         sources:
-          - table: Game
-            sources: [./database/data/Game.json]
+          - table: Popla
+            sources: [./database/data/Popla.json]
 
 resources:
   - ${file(database/tables.yml)}

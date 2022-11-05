@@ -2,11 +2,11 @@ Resources:
   tableAuthenticateSession:
     Type: 'AWS::DynamoDB::Table'
     Properties:
-      TableName: Game
+      TableName: Popla
       AttributeDefinitions:
-        - AttributeName: id
+        - AttributeName: pk
           AttributeType: S
       KeySchema:
-        - AttributeName: id
+        - AttributeName: pk
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
