@@ -7,7 +7,7 @@
     "start": "npx serverless offline start --reloadHandler"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "author": "alanrenoneves@gmail.com",
   "devDependencies": {
