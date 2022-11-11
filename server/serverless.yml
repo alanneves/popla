@@ -1,5 +1,9 @@
 service: popla
 
+package:
+  exclude:
+    - .dynamodb/**
+
 frameworkVersion: '3'
 
 provider:
@@ -9,7 +13,24 @@ provider:
   architecture: arm64
   memorySize: 1024
   logRetentionInDays: 7
-
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - 'dynamodb:*'
+          Resource:
+            - { "Fn::GetAtt": ["tableGame", "Arn" ] }
+        - Effect: 'Allow'
+          Action:
+            - 'lambda:InvokeFunction'
+          Resource:
+            - '*'
+        - Effect: 'Allow'
+          Action:
+            - 'execute-api:Invoke'
+          Resource:
+            - '*'
 functions:
   healthCheck:
     handler: src/functions/healthCheck.lambda
@@ -18,18 +39,11 @@ functions:
           path: /v1/health/check
           method: GET
 
-  getUser:
-    handler: src/functions/user/get.lambda
+  createGame:
+    handler: src/functions/game/create.lambda
     events:
       - httpApi:
-          path: /v1/users/{id}
-          method: GET
-
-  createUser:
-    handler: src/functions/user/create.lambda
-    events:
-      - httpApi:
-          path: /v1/users
+          path: /v1/game/create
           method: POST
 
 plugins:
@@ -48,8 +62,8 @@ custom:
     seed:
       domain:
         sources:
-          - table: Popla
-            sources: [./database/data/Popla.json]
+          - table: Game
+            sources: [./database/data/Game.json]
 
 resources:
   - ${file(database/tables.yml)}

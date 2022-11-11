@@ -1,4 +1,4 @@
-import AWS from "aws-sdk";
+import AWS from "/var/runtime/node_modules/aws-sdk/lib/aws.js";
 
 export default new AWS.DynamoDB.DocumentClient(
   process.env.IS_OFFLINE

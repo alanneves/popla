@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "createGame",
+      "program": "${workspaceFolder}/server/node_modules/.bin/sls",
+      "console": "externalTerminal", //opens an external console with debug information
+      "env": {
+        "AWS_PROFILE": "default"
+      },
+      // "args": [
+      //   "invoke",
+      //   "local",
+      //   "-f",
+      //   "createGame",
+      // ]
+    }
+  ]
+}

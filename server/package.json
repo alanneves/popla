@@ -15,5 +15,8 @@
     "serverless": "^3.24.0",
     "serverless-dynamodb-local": "^0.2.40",
     "serverless-offline": "^11.2.3"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0"
   }
 }

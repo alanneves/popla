@@ -9,12 +9,54 @@
             <div class="table-player-name">Alan</div>
           </div>
         </div>
+        <div class="table-player-wrapper">
+          <div class="table-player-container">
+            <div class="table-player-card-empty"></div>
+            <div class="table-player-name">Alan</div>
+          </div>
+        </div>
       </div>
       <div></div>
       <div class="table-left"></div>
-      <div class="table">
-
+      <div class="table">Pick your cards!</div>
+      <div class="table-right"></div>
+      <div></div>
+      <div class="table-bottom">
+        <div class="table-player-wrapper">
+          <div class="table-player-container">
+            <div class="table-player-card-empty"></div>
+            <div class="table-player-name">Alan</div>
+          </div>
+        </div>
+        <div class="table-player-wrapper">
+          <div class="table-player-container">
+            <div class="table-player-card-empty"></div>
+            <div class="table-player-name">Alan</div>
+          </div>
+        </div>
+        <div class="table-player-wrapper">
+          <div class="table-player-container">
+            <div class="table-player-card-empty"></div>
+            <div class="table-player-name">Alan</div>
+          </div>
+        </div>        <div class="table-player-wrapper">
+          <div class="table-player-container">
+            <div class="table-player-card-empty"></div>
+            <div class="table-player-name">Alan</div>
+          </div>
+        </div>        <div class="table-player-wrapper">
+          <div class="table-player-container">
+            <div class="table-player-card-empty"></div>
+            <div class="table-player-name">Alan</div>
+          </div>
+        </div>        <div class="table-player-wrapper">
+          <div class="table-player-container">
+            <div class="table-player-card-empty"></div>
+            <div class="table-player-name">Alan</div>
+          </div>
+        </div>
       </div>
+      <div></div>
     </div>
   </div>
 </template>
@@ -49,6 +91,27 @@
   justify-content: center;
 }
 
+.table-wrapper .table-container .table-bottom {
+  grid-area: bottom;
+  padding-top: 1.6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.table-wrapper .table-container .table {
+  background: #d7e9ff;
+  border-radius: 2.8rem;
+  grid-area: table;
+  min-height: 15.1rem;
+  min-width: 33.8rem;
+  padding: 0 1.6rem;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .table-wrapper .table-container .table-player-wrapper {
   display: flex;
   max-width: 8rem;
@@ -67,8 +130,8 @@
   background: #e8e9ea;
   border-radius: 0.6rem;
   flex-shrink: 0;
-  height: 6rem;
-  width: 3.5rem;
+  height: 7rem;
+  width: 4.2rem;
 }
 
 .table-wrapper .table-container .table-player-name {
@@ -76,7 +139,7 @@
   -webkit-box-orient: vertical;
   align-items: center;
   display: -webkit-box;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 700;
   justify-content: center;
   line-height: 1.1em;
