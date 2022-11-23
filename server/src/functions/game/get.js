@@ -4,14 +4,11 @@ import Game from "../../lib/Game.js";
 
 export const lambda = async (event) => {
   try {
-    const sessionUuid = event?.headers?.["x-session-uuid"];
-    const name = event?.headers?.name;
+    const id = event.pathParameters.id;
 
-    if (!sessionUuid || !name) return badRequest({ message: "Missing user data" });
+    const game = await new Game().get(id);
 
-    const id = await new Game().create(sessionUuid, name);
-
-    return ok({ id });
+    return ok(game);
   } catch (err) {
     console.error(err);
     return lambdaError(err);

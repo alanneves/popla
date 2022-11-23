@@ -43,7 +43,21 @@ functions:
     handler: src/functions/game/create.lambda
     events:
       - httpApi:
-          path: /v1/game/create
+          path: /v1/game
+          method: POST
+
+  getGame:
+    handler: src/functions/game/get.lambda
+    events:
+      - httpApi:
+          path: /v1/game/{id}
+          method: GET
+
+  joinGame:
+    handler: src/functions/game/join.lambda
+    events:
+      - httpApi:
+          path: /v1/game/{id}/join
           method: POST
 
 plugins:

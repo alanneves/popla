@@ -6,12 +6,13 @@ export const lambda = async (event) => {
   try {
     const sessionUuid = event?.headers?.["x-session-uuid"];
     const name = event?.headers?.name;
-
     if (!sessionUuid || !name) return badRequest({ message: "Missing user data" });
 
-    const id = await new Game().create(sessionUuid, name);
+    const id = event.pathParameters.id;
 
-    return ok({ id });
+    const game = await new Game().join(id, sessionUuid, name);
+
+    return ok(game);
   } catch (err) {
     console.error(err);
     return lambdaError(err);

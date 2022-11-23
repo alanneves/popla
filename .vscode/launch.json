@@ -6,16 +6,10 @@
       "request": "launch",
       "name": "createGame",
       "program": "${workspaceFolder}/server/node_modules/.bin/sls",
-      "console": "externalTerminal", //opens an external console with debug information
+      "console": "integratedTerminal", //opens an external console with debug information
       "env": {
-        "AWS_PROFILE": "default"
+        "AWS_PROFILE": "defaudlt"
       },
-      // "args": [
-      //   "invoke",
-      //   "local",
-      //   "-f",
-      //   "createGame",
-      // ]
     }
   ]
 }
