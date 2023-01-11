@@ -9,15 +9,30 @@
 
 <script setup lang="ts">
 import { GameHeader, GameModal, GameDeck, GameTable } from '@components/game';
+import { reactive, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
-import { reactive } from 'vue';
-
+const router = useRouter();
+const store = useStore();
 const state = reactive({
   show: {
     modal: true,
   }
 });
 
+
+console.log(router.currentRoute.value.params.id);
+const getGame = async () => {
+  console.log(store.getters.gameId);
+  if (store.getters.gameId) return;
+  await store.dispatch('GET_GAME', {
+    id: router.currentRoute.value.params.id,
+  });
+  console.log(store.getters.gameId);
+};
+
+await getGame();
 </script>
 
 <style scoped>

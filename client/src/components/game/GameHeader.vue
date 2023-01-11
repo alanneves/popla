@@ -1,12 +1,15 @@
 <template>
   <header>
     <img :src="LogoImage" alt="Popla Logo">
-    <h1>Create Game</h1>
+    <h1>{{ store.getters.gameName }}</h1>
   </header>
 </template>
 
 <script setup lang="ts">
 import { LogoImage } from '@assets/images';
+import { useStore } from 'vuex';
+
+const store = useStore();
 </script>
 
 <style scoped>

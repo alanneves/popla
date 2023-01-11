@@ -1,16 +1,25 @@
 <template>
-  <div class="button-container">
+  <div :class="{
+  'button-container': true,
+  'button-container--disabled': disabled,
+}">
     {{ label }}
   </div>
 </template>
 
 <script setup lang="ts">
+
 defineProps({
   label: {
     type: String,
     required: true,
-  }
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 });
+
 </script>
 
 <style scoped>
@@ -36,5 +45,10 @@ defineProps({
 .button-container:active {
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px #d7e9ff;
   background-color: #0061d6;
+}
+
+.button-container--disabled {
+  background-color: #b7b4d8;
+  cursor: not-allowed;
 }
 </style>

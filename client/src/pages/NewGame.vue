@@ -7,9 +7,9 @@
     <main>
       <div class="main-content">
         <p>Choose a name and a voting system for your game.</p>
-        <TextInput label="Game's name" v-model:value="value" />
+        <TextInput @keyup.enter="createGame" label="Game's name" v-model:value="value" />
         <Select label="Voting system" :options="votingSystemOptions" v-model:value="selectedVotingSystem" />
-        <Button class="button" label="Create game" />
+        <Button class="button" :disabled="!value" label="Create game" @click="createGame" />
       </div>
     </main>
   </div>
@@ -18,6 +18,11 @@
 import { TextInput, Select, Button } from '@/components/shared';
 import { ref } from 'vue';
 import { LogoImage } from '@assets/images';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
+const store = useStore();
+const router = useRouter();
 
 const votingSystemOptions = [{
   label: 'Fibonacci ( 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ? )',
@@ -27,8 +32,23 @@ const votingSystemOptions = [{
   value: 'sequencial'
 }];
 
+
 const selectedVotingSystem = ref('fibonacci');
 const value = ref('');
+
+const createGame = async () => {
+  if (!value.value) return;
+
+  await store.dispatch('CREATE_GAME', {
+    name: value.value
+  });
+
+  goToGamePage();
+};
+
+const goToGamePage = () => {
+  router.push({ path: `/game/${store.getters.gameId}` });
+};
 </script>
 
 <style scoped>
