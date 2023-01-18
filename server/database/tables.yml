@@ -10,3 +10,18 @@ Resources:
         - AttributeName: id
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
+  tableUserGame:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: UserGame
+      AttributeDefinitions:
+        - AttributeName: connectionId
+          AttributeType: S
+        - AttributeName: gameId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: connectionId
+          KeyType: HASH
+        - AttributeName: gameId
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST

@@ -8,10 +8,26 @@ export default createStore({
     $loading: useLoading(),
     game: {
       id: null,
+      name: null,
+    },
+    user: {
+      uuid: null,
+      name: null,
     },
   },
 
   getters: {
+    user(state) {
+      if (!state.user.uuid || !state.user.name) {
+        return null;
+      }
+
+      return {
+        uuid: state.user.uuid,
+        name: state.user.name,
+      };
+    },
+
     gameId(state) {
       return state.game.id;
     },
@@ -54,6 +70,18 @@ export default createStore({
       const game = await GameService.get({ id });
       commit('SET_GAME_ID', game.id);
       commit('SET_GAME_NAME', game.name);
+    },
+
+    async JOIN_GAME({ commit }, { name }) {
+      const websocket = new WebSocket(
+        'ws://localhost:3001/?gameId=ltzi5rn0k9&name=test_name'
+      );
+
+      return new Promise((resolve, reject) => {
+        websocket.onopen = (event) => {
+          resolve();
+        };
+      });
     },
   },
 });

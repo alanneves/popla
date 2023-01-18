@@ -1,8 +1,8 @@
 <template>
   <Modal class="game-modal">
     <h4>Write your name :)</h4>
-    <TextInput id="name-input" label="Your name" v-model:value="state.name" />
-    <Button label="Continue to game" @click="submit" />
+    <TextInput id="name-input" @keyup.enter="submit" label="Your name" v-model:value="state.name" />
+    <Button label="Continue to game" @click="submit" :disabled="!state.name" />
   </Modal>
 </template>
 
@@ -15,14 +15,16 @@ const state = reactive({
 });
 
 const emit = defineEmits<{
-  (event: 'close'): void
+  (event: 'submit', userData: { name: string }): void
 }>();
 
 const submit = () => {
   if (!state.name)
     return;
 
-  emit('close');
+  emit('submit', {
+    name: state.name,
+  });
 };
 
 </script>

@@ -33,21 +33,20 @@ class Game {
     return Item;
   }
 
-  async join(id, uuid, name) {
+  async join(id, connectionId, name) {
     await this.get(id);
 
     const { Attributes } = await dynamoDB
       .update({
         TableName: TABLE_NAME,
         Key: { id },
-        UpdateExpression: "SET participants.#uuid = :uuid",
+        UpdateExpression: "SET #participants = list_append(if_not_exists(#participants, :empty_list), :connection)",
         ExpressionAttributeNames: {
-          "#uuid": uuid,
+          "#participants": "participants",
         },
         ExpressionAttributeValues: {
-          ":uuid": {
-            name,
-          },
+          ":connection": [{ connectionId, name }],
+          ":empty_list": [],
         },
         ReturnValues: "ALL_NEW",
       })

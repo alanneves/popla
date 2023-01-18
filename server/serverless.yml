@@ -60,6 +60,17 @@ functions:
           path: /v1/game/{id}/join
           method: POST
 
+  websocket:
+    handler: src/functions/game/websocket.lambda
+    events:
+      - websocket:
+          route: $connect
+
+      - websocket:
+          route: $default
+
+      - websocket:
+          route: $disconnect
 plugins:
   - serverless-dynamodb-local
   - serverless-offline
